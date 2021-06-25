@@ -1,5 +1,5 @@
-function outf(text, element_id) { 
-  var output = document.getElementById(element_id); 
+function outf(text) { 
+  var output = document.getElementById("output"); 
   output.innerHTML += text;
 }
 function builtin_read(x) {
@@ -25,7 +25,7 @@ function runit(element_id, code_editor=null) {
   var mypre = turtle_window.document.getElementById("output");
   mypre.innerHTML = ''; 
   Sk.pre = "output";
-  Sk.configure({output: outf, read: builtinRead, __future__: Sk.python3, inputfunTakesPrompt: true });
+  Sk.configure({output: outf, read: builtin_read, __future__: Sk.python3, inputfunTakesPrompt: true });
   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = turtle_window.document.querySelector('#mycanvas');
   var myPromise = Sk.misceval.asyncToPromise(function() {
     return Sk.importMainWithBody("<stdin>", false, python_code, true);
