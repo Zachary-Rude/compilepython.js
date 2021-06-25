@@ -1,5 +1,5 @@
-function outf(text) { 
-  var output = document.getElementById("output"); 
+function outf(text, element_id) { 
+  var output = document.getElementById(element_id); 
   output.innerHTML += text;
 }
 function builtin_read(x) {
