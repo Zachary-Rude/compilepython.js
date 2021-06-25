@@ -2,13 +2,14 @@ function outf(text) {
   var output = document.getElementById("output"); 
   output.innerHTML += text;
 }
-function builtinRead(x) {
+function builtin_read(x) {
   if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
     throw "File not found: '" + x + "'";
   return Sk.builtinFiles["files"][x];
 }
 var turtle_window;
-function runit() {
+var python_code;
+function runit(element_id, code_editor=null) {
   turtle_window = window.open("", "myWindow", "width=418,height=326");
   turtle_window.document.write(`
   <style>
@@ -16,7 +17,11 @@ function runit() {
   </style>
   <pre id="output"></pre>
   <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>`);
-  var python_code = python_editor.getValue();
+  if (code_editor != null) {
+    python_code = code_editor.getValue();
+  } else {
+    python_code = document.getElementById(element_id).value;
+  }
   var mypre = turtle_window.document.getElementById("output");
   mypre.innerHTML = ''; 
   Sk.pre = "output";
@@ -31,4 +36,4 @@ function runit() {
   function(err) {
     console.error(err.toString());
   });
-} 
+}
