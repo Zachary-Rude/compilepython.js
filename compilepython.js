@@ -26,6 +26,7 @@ function runit(element_id=null, code_editor=null) {
           height: inherit;
         }
         #output { display: none; }
+        #mycanvas canvas { margin: auto; }
       </style>
     </head>
     <body style="margin: 0;">
