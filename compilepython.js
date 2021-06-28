@@ -10,13 +10,14 @@ function builtin_read(x) {
 var turtle_window;
 var python_code;
 function runit(element_id=null, code_editor=null) {
-  turtle_window = window.open("", "myWindow", "width=960,height=839.05522381798");
+  turtle_window = window.open("", "myWindow", "width=960.0001209449,height=839.05522381798,left=483.77958850766,top=136.06300926778");
   turtle_window.document.write(`
   <style>
     *:focus { outline: none; }
   </style>
   <pre id="output"></pre>
   <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>`);
+  turtle_window.document.title = "Python Turtle Graphics";
   if (code_editor != null && element_id == null) {
     python_code = code_editor.getValue();
   } else {
