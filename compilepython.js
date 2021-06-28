@@ -17,7 +17,12 @@ function runit(element_id=null, code_editor=null) {
       <title>Python Turtle Graphics</title>
       <style>
         *:focus { outline: none; }
-        body { text-align: center; }
+        body {
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          vertical-align: middle;
+        }
       </style>
     </head>
     <body>
