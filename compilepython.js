@@ -9,7 +9,7 @@ function builtin_read(x) {
 }
 var turtle_window;
 var python_code;
-function runit(element_id, code_editor=null) {
+function runit(element_id=null, code_editor=null) {
   turtle_window = window.open("", "myWindow", "width=418,height=326");
   turtle_window.document.write(`
   <style>
@@ -17,7 +17,7 @@ function runit(element_id, code_editor=null) {
   </style>
   <pre id="output"></pre>
   <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>`);
-  if (code_editor != null) {
+  if (code_editor != null && element_id == null) {
     python_code = code_editor.getValue();
   } else {
     python_code = document.getElementById(element_id).value;
