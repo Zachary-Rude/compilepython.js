@@ -10,18 +10,22 @@ function builtin_read(x) {
 var turtle_window;
 var python_code;
 function runit(element_id=null, code_editor=null) {
-  turtle_window = window.open("", "myWindow", "width=960.0001209449,height=839.05522381798,left=483,top=136");
-  turtle_window.document.write(`
-  <head>
-    <style>
-      *:focus { outline: none; }
-      body { text-align: center; }
-    </style>
-  </head>
-  <body>
-    <pre id="output"></pre>
-    <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>
-  </body>`);
+  turtle_window = window.open("", "myWindow", "width=960.0001209449,height=839.05522381798");
+  turtle_window.document.write(`<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Python Turtle Graphics</title>
+      <style>
+        *:focus { outline: none; }
+        body { text-align: center; }
+      </style>
+    </head>
+    <body>
+      <pre id="output"></pre>
+      <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>
+    </body>
+  </html>`);
+  turtle_window.moveTo(483, 136);
   if (code_editor != null && element_id == null) {
     python_code = code_editor.getValue();
   } else {
