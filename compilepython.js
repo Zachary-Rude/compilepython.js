@@ -28,8 +28,8 @@ function runit(element_id=null, code_editor=null) {
         #output { display: none; }
       </style>
     </head>
-    <body>
-      <pre id="output"></pre>
+    <body style="margin: 0;">
+      <pre id="output" style="display: none;"></pre>
       <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>
     </body>
   </html>`);
