@@ -22,7 +22,10 @@ function runit(element_id=null, code_editor=null) {
           justify-content: center;
           align-items: center;
           vertical-align: middle;
+          margin: 0;
+          height: inherit;
         }
+        #output { display: none; }
       </style>
     </head>
     <body>
