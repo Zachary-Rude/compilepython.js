@@ -30,7 +30,7 @@ function runit(element_id=null, code_editor=null) {
       </style>
     </head>
     <body>
-      <pre id="output"></pre>
+      <pre id="result"></pre>
       <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>
     </body>
   </html>`);
@@ -40,9 +40,9 @@ function runit(element_id=null, code_editor=null) {
   } else {
     python_code = document.getElementById(element_id).value;
   }
-  var mypre = turtle_window.document.getElementById("output");
+  var mypre = turtle_window.document.getElementById("result");
   mypre.innerHTML = ''; 
-  Sk.pre = "output";
+  Sk.pre = "result";
   Sk.configure({
     output: outf,
     read: builtin_read,
