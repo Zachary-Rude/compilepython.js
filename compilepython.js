@@ -10,7 +10,7 @@ function builtin_read(x) {
 var turtle_window;
 var python_code;
 function runit(element_id=null, code_editor=null) {
-  turtle_window = window.open("", "myWindow", "width=960.0001209449,height=839.05522381798");
+  turtle_window = window.open("", "myWindow", "width=500,height=500");
   turtle_window.document.write(`<!DOCTYPE html>
   <html>
     <head>
@@ -29,8 +29,8 @@ function runit(element_id=null, code_editor=null) {
         #mycanvas canvas { margin: auto; }
       </style>
     </head>
-    <body style="margin: 0;">
-      <pre id="output" style="display: none;"></pre>
+    <body>
+      <pre id="output"></pre>
       <div id="mycanvas" oncontextmenu="e.preventDefault()"></div>
     </body>
   </html>`);
@@ -43,7 +43,17 @@ function runit(element_id=null, code_editor=null) {
   var mypre = turtle_window.document.getElementById("output");
   mypre.innerHTML = ''; 
   Sk.pre = "output";
-  Sk.configure({output: outf, read: builtin_read, __future__: Sk.python3, inputfunTakesPrompt: true });
+  Sk.configure({
+    output: outf,
+    read: builtin_read,
+    __future__: Sk.python3,
+    inputfun: function(python_prompt) {
+      return new Promise((resolve, reject) => {
+        resolve(python_prompt);
+      });
+    },
+    inputfunTakesPrompt: true
+  });
   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = turtle_window.document.querySelector('#mycanvas');
   var myPromise = Sk.misceval.asyncToPromise(function() {
     return Sk.importMainWithBody("<stdin>", false, python_code, true);
