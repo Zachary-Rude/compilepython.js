@@ -57,7 +57,7 @@ function runit(element_id=null, code_editor=null) {
       input_box.style.border = "none";
       input_box.style.fontFamily = "monospace";
       input_box.type = "text";
-      document.getElementById("result").innerHTML += input_box;
+      document.getElementById("result").appendChild(input_box);
       return document.getElementsByTagName("input")[input_boxes].value;
     },
     inputfunTakesPrompt: true
