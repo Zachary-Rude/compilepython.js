@@ -1,6 +1,6 @@
 function outf(text) { 
-  var output = document.getElementById("result"); 
-  output.innerHTML += text;
+  var output = document.getElementById("result");
+  output.innerHTML = text;
 }
 function builtin_read(x) {
   if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
@@ -47,19 +47,6 @@ function runit(element_id=null, code_editor=null) {
     output: outf,
     read: builtin_read,
     __future__: Sk.python3,
-    inputfun: function(prompt) {
-      var input_boxes = 0;
-      var prompt_msg = prompt;
-      document.getElementById("result").innerHTML += prompt_msg;
-      var input_box = document.createElement("input");
-      input_boxes++;
-      input_box.style.outline = "none";
-      input_box.style.border = "none";
-      input_box.style.fontFamily = "monospace";
-      input_box.type = "text";
-      document.getElementById("result").appendChild(input_box);
-      return document.getElementsByTagName("input")[input_boxes].value;
-    },
     inputfunTakesPrompt: true
   });
   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = turtle_window.document.querySelector('#mycanvas');
