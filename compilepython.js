@@ -1,8 +1,3 @@
-function outf(text) { 
-  var output = document.getElementById("result");
-  text = document.createTextNode(text);
-  output.appendChild(text);
-}
 function builtin_read(x) {
   if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
     throw "File not found: '" + x + "'";
@@ -45,10 +40,27 @@ function runit(element_id=null, code_editor=null) {
   mypre.innerHTML = ''; 
   Sk.pre = "output";
   Sk.configure({
-    output: outf,
+    output: function(text) {
+      var mypre = document.getElementById("result");
+      text = document.createTextNode(text);
+      if (!python_code.contains("input()") {
+        mypre.appendChild(text);
+      } else {
+        var input_function = function(prompt) {
+        document.getElementById("result").innerHTML += prompt;
+        var input_box = document.createElement("input");
+        input_box.style.fontFamily = "monospace";
+        input_box.style.outline = "none";
+        input_box.style.border = "none";
+        document.getElementById("result").appendChild(input_box);
+        };
+        input_function();
+      }
+    },
     read: builtin_read,
     __future__: Sk.python3,
     inputfun: function(prompt) {
+      document.getElementById("result").innerHTML += prompt;
       var input_box = document.createElement("input");
       input_box.style.fontFamily = "monospace";
       input_box.style.outline = "none";
@@ -67,4 +79,9 @@ function runit(element_id=null, code_editor=null) {
   function(err) {
     console.error(err.toString());
   });
+}
+function outf(text) { 
+  var output = document.getElementById("result");
+  text = document.createTextNode(text);
+  output.appendChild(text);
 }
